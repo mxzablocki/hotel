@@ -1,0 +1,90 @@
+/*
+* Arkusz stylów
+* Podstawowy wygląd aplikacji
+* -------------------------------------------------- */
+
+
+/*
+* Główne
+* -------------------------------------------------- */
+QMainWindow,
+QDialog {
+  background-color: #fff;
+}
+
+
+/*
+* Typografia
+* -------------------------------------------------- */
+QLabel,
+QGroupBox {
+  color: #555;
+}
+
+QLabel {
+  font-size: 15px;
+}
+
+QGroupBox {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+QLabel#labelInfoTitle {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+QLabel#labelInfoText {
+  padding: 20px;
+}
+
+QLabel#labelInfoClientsNumber,
+QLabel#labelInfoRoomsNumber {
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fafafa;
+  text-align: center;
+  background-color: #424242;
+  border-radius: 2px;
+}
+
+QLabel#labelIconHotel,
+QLabel#labelIconAuthors {
+  padding: 0;
+}
+
+
+/*
+* Formularze, przyciski
+* -------------------------------------------------- */
+QLineEdit {
+  padding: 6px 12px;
+  font-size: 15px;
+  color: #555;
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+QLineEdit:focus {
+  border: 1px solid #2196f3;
+}
+
+QPushButton {
+  padding: 6px 12px;
+  font-size: 15px;
+  text-align: center;
+  color: #fafafa;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: #2196f3;
+}
+
+QPushButton:hover,
+QPushButton:focus {
+  background-color: #0c7cd5; /* darken(#2196f3, 10%) */
+}
