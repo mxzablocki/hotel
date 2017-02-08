@@ -68,18 +68,12 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="lineEditRoomName"/>
-          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="labelRoomSurname">
             <property name="text">
              <string>Ilość miejsc</string>
             </property>
            </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="lineEditRoomSurname"/>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="labelRoomInstitution">
@@ -90,6 +84,12 @@
           </item>
           <item row="2" column="1">
            <widget class="QLineEdit" name="lineEditRoomInstitution"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spinBoxRoomNumber"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="spinBoxRoomPeople"/>
           </item>
          </layout>
         </widget>
@@ -207,38 +207,6 @@
   <connection>
    <sender>pushButtonResetForm</sender>
    <signal>clicked()</signal>
-   <receiver>lineEditRoomName</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>793</x>
-     <y>410</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>637</x>
-     <y>103</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButtonResetForm</sender>
-   <signal>clicked()</signal>
-   <receiver>lineEditRoomSurname</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>841</x>
-     <y>410</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>699</x>
-     <y>129</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButtonResetForm</sender>
-   <signal>clicked()</signal>
    <receiver>lineEditRoomInstitution</receiver>
    <slot>clear()</slot>
    <hints>
@@ -249,6 +217,38 @@
     <hint type="destinationlabel">
      <x>773</x>
      <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>spinBoxRoomNumber</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>812</x>
+     <y>412</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>802</x>
+     <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>spinBoxRoomPeople</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>884</x>
+     <y>405</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>879</x>
+     <y>131</y>
     </hint>
    </hints>
   </connection>
