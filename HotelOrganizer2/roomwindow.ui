@@ -203,5 +203,54 @@
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditRoomName</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>793</x>
+     <y>410</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>637</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditRoomSurname</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>841</x>
+     <y>410</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>699</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditRoomInstitution</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>869</x>
+     <y>413</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>773</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
