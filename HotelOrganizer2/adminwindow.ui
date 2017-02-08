@@ -89,7 +89,11 @@
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLineEdit" name="lineEditClientPesel"/>
+           <widget class="QLineEdit" name="lineEditClientPesel">
+            <property name="maxLength">
+             <number>11</number>
+            </property>
+           </widget>
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="labelClientDate">
@@ -243,5 +247,118 @@
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditClientName</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>840</x>
+     <y>463</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>750</x>
+     <y>98</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditClientSurname</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>879</x>
+     <y>456</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>792</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditClientPesel</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>893</x>
+     <y>464</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>874</x>
+     <y>159</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditClientDate</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>940</x>
+     <y>463</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>896</x>
+     <y>186</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditClientDays</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>935</x>
+     <y>463</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>928</x>
+     <y>217</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditClientPeople</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>962</x>
+     <y>460</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>950</x>
+     <y>244</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>lineEditClientRoom</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>977</x>
+     <y>467</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>978</x>
+     <y>279</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
