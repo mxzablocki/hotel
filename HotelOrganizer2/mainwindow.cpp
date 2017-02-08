@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QMessageBox> // wyswietlanie komunikator podczas logownia
+#include <QMessageBox> // wyswietlanie komunikatow podczas logownia
 #include <QPixmap>     // do ikon
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    adminWindow = nullptr;
     // ikona ekran logowania
     QPixmap iconLogin(":/images/img/icon-login.png");
     ui->labelIconLogin->setPixmap(iconLogin.scaled(120, 120, Qt::KeepAspectRatio));
@@ -16,6 +17,9 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    // zwalnianie okna zarzadzania klientami
+    // musi byc zwolnione, poniewaz tworzone jest bez uzycia parametru (okno nie ma "rodzica")
+    delete adminWindow;
 }
 
 // przycisk logowania
@@ -50,7 +54,7 @@ void MainWindow::on_actionApplication_triggered()
     infoApplicationWindow.exec();
 }
 
-// otwarcie okna informacje o autorach
+// otwarcie okna informacje o autorach z menu programu
 void MainWindow::on_actionAuthors_triggered()
 {
     InfoAuthors infoAuthorsWindow;

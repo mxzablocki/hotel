@@ -26,9 +26,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    AdminWindow *adminWindow;                   // okno zarzadzania klientami
-    InfoApplication *infoApplicationWindow;     // okno informacje o aplikacji
-    InfoAuthors *infoAuthorsWindow;             // okno informacje o autorach
+    AdminWindow *adminWindow; // okno zarzadzania klientami
 };
 
 #endif // MAINWINDOW_H
