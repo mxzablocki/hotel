@@ -60,7 +60,8 @@ QLabel#labelIconAuthors {
 /*
 * Formularze, przyciski
 * -------------------------------------------------- */
-QLineEdit {
+QLineEdit,
+QSpinBox {
   padding: 6px 12px;
   font-size: 15px;
   color: #555;
