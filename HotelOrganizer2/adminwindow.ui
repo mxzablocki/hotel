@@ -69,7 +69,11 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="lineEditClientName"/>
+           <widget class="QLineEdit" name="lineEditClientName">
+            <property name="maxLength">
+             <number>100</number>
+            </property>
+           </widget>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="labelClientSurname">
@@ -79,7 +83,11 @@
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="lineEditClientSurname"/>
+           <widget class="QLineEdit" name="lineEditClientSurname">
+            <property name="maxLength">
+             <number>100</number>
+            </property>
+           </widget>
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="labelClientPesel">
@@ -90,6 +98,9 @@
           </item>
           <item row="2" column="1">
            <widget class="QLineEdit" name="lineEditClientPesel">
+            <property name="inputMask">
+             <string/>
+            </property>
             <property name="maxLength">
              <number>11</number>
             </property>
@@ -102,9 +113,6 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QLineEdit" name="lineEditClientDate"/>
-          </item>
           <item row="4" column="0">
            <widget class="QLabel" name="labelClientDays">
             <property name="text">
@@ -112,11 +120,12 @@
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="lineEditClientDays"/>
-          </item>
           <item row="5" column="1">
-           <widget class="QSpinBox" name="spinBoxClientRoomNumber"/>
+           <widget class="QSpinBox" name="spinBoxClientRoomNumber">
+            <property name="maximum">
+             <number>1000</number>
+            </property>
+           </widget>
           </item>
           <item row="5" column="0">
            <widget class="QLabel" name="labelClientRoom">
@@ -133,7 +142,48 @@
            </widget>
           </item>
           <item row="6" column="1">
-           <widget class="QSpinBox" name="spinBoxClientPeople"/>
+           <widget class="QSpinBox" name="spinBoxClientPeople">
+            <property name="maximum">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QDateEdit" name="dateEditClientDate">
+            <property name="dateTime">
+             <datetime>
+              <hour>0</hour>
+              <minute>0</minute>
+              <second>0</second>
+              <year>2017</year>
+              <month>2</month>
+              <day>11</day>
+             </datetime>
+            </property>
+            <property name="minimumDateTime">
+             <datetime>
+              <hour>0</hour>
+              <minute>0</minute>
+              <second>0</second>
+              <year>2017</year>
+              <month>2</month>
+              <day>11</day>
+             </datetime>
+            </property>
+            <property name="displayFormat">
+             <string>dd-MM-yyyy</string>
+            </property>
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QSpinBox" name="spinBoxClientDays">
+            <property name="maximum">
+             <number>365</number>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -256,7 +306,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>991</x>
-     <y>532</y>
+     <y>474</y>
     </hint>
     <hint type="destinationlabel">
      <x>750</x>
@@ -272,7 +322,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>991</x>
-     <y>532</y>
+     <y>474</y>
     </hint>
     <hint type="destinationlabel">
      <x>792</x>
@@ -288,7 +338,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>991</x>
-     <y>532</y>
+     <y>474</y>
     </hint>
     <hint type="destinationlabel">
      <x>874</x>
@@ -299,48 +349,16 @@
   <connection>
    <sender>pushButtonResetForm</sender>
    <signal>clicked()</signal>
-   <receiver>lineEditClientDate</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>991</x>
-     <y>532</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>896</x>
-     <y>186</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButtonResetForm</sender>
-   <signal>clicked()</signal>
-   <receiver>lineEditClientDays</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>991</x>
-     <y>532</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>928</x>
-     <y>217</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButtonResetForm</sender>
-   <signal>clicked()</signal>
    <receiver>spinBoxClientPeople</receiver>
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>963</x>
-     <y>517</y>
+     <x>991</x>
+     <y>474</y>
     </hint>
     <hint type="destinationlabel">
-     <x>939</x>
-     <y>250</y>
+     <x>991</x>
+     <y>284</y>
     </hint>
    </hints>
   </connection>
@@ -351,12 +369,44 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>984</x>
-     <y>515</y>
+     <x>991</x>
+     <y>474</y>
     </hint>
     <hint type="destinationlabel">
-     <x>974</x>
-     <y>282</y>
+     <x>991</x>
+     <y>255</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>dateEditClientDate</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>963</x>
+     <y>463</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>961</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButtonResetForm</sender>
+   <signal>clicked()</signal>
+   <receiver>spinBoxClientDays</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>925</x>
+     <y>463</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>914</x>
+     <y>221</y>
     </hint>
    </hints>
   </connection>
