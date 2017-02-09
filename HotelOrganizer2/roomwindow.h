@@ -20,6 +20,10 @@ public:
 
 private slots:
     void on_pushButtonManageRooms_clicked();
+	void on_pushButtonRoomAdd_clicked();
+	void on_pushButtonRoomSearch_clicked();
+	void on_pushButtonRoomEdit_clicked();
+	void on_pushButtonRoomDelete_clicked();
 
 private:
     Ui::RoomWindow *ui;
