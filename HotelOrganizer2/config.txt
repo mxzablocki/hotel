@@ -1,0 +1,10 @@
+baza klientów
+klienci.txt
+baza logów
+logi.txt
+baza pokoi
+pokoje.txt
+baza rezerwacji
+rezerwacje.txt
+baza u¿ytkowników
+uzytkownicy.txt

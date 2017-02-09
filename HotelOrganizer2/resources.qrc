@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>img/icon-hotel.png</file>
+        <file>img/icon-login.png</file>
+        <file>img/icon-authors.png</file>
+        <file>img/icon-dashboard.png</file>
+    </qresource>
+    <qresource prefix="/styles">
+        <file>qss/style.qss</file>
+    </qresource>
+</RCC>
