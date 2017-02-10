@@ -4,12 +4,35 @@
 #include <QString>
 #include "BazaDanych.h"
 
-AdminWindow::AdminWindow(QWidget *parent) :
-	QMainWindow(parent),
-	ui(new Ui::AdminWindow)
+AdminWindow::AdminWindow(QWidget *parent) :ui(new Ui::AdminWindow)
 {
-	ui->setupUi(this);
+	BazaDanych * baza;
+	string** rezerwacje;
+	baza = new BazaDanych();
+	int iloscDanych = baza->select("rezerwacje", rezerwacje);
+	QString clientID, clientName, clientSurname, clientPesel, clientDate, clientDays, clientRoomNumber, clientPeople;
+	QMainWindow(parent),
+		ui->setupUi(this);
 	roomWindow = nullptr;
+	for (int i = 0; i < iloscDanych; i++)
+	{
+		clientID = QString::fromStdString(rezerwacje[i][0]);
+		clientRoomNumber = QString::fromStdString(rezerwacje[i][3]);
+		clientPeople = QString::fromStdString(rezerwacje[i][12]);
+		clientName = QString::fromStdString(rezerwacje[i][5]);
+		clientSurname = QString::fromStdString(rezerwacje[i][6]);
+		clientPesel = QString::fromStdString(rezerwacje[i][7]);
+		clientDate = QString::fromStdString(rezerwacje[i][10]);
+		clientDays = QString::fromStdString(rezerwacje[i][11]);
+		ui->listWidgetClients->addItem(
+			clientID + " " + clientName + " " + clientSurname + " " + clientPesel + " " +
+			clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
+		);
+	}
+	delete baza;
+	for (int i = 0; i < iloscDanych; i++)
+		delete[] rezerwacje[i];
+	delete[] rezerwacje;
 }
 
 AdminWindow::~AdminWindow()
