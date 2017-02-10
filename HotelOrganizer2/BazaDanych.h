@@ -30,7 +30,7 @@ public:
 	void modyfy(std::string bazaDanych, int ID, std::string dane[]);
 	int remove(std::string bazaDanych, int ID);
 	//przyjmuje tablice danych o rozmiaze wyszyskich pol tablicy(lacznie z id) ID nie musi byc podawane
-	void insert(std::string bazaDanych, std::string dane[]);
+	void insert(std::string bazaDanych, std::string* dane);
 	//void sortTable(std::string bazaDanych);
 private:
 	//sciezki do polaczenia z plikami

@@ -328,7 +328,7 @@ int BazaDanych::szukajID(string bazaDanych)
 	}
 }
 
-void BazaDanych::insert(string bazaDanych, string dane[])
+void BazaDanych::insert(string bazaDanych, string* dane)
 {
 	Klienci *tmpKlienci;
 	Pokoje *tmpPokoje;
@@ -382,6 +382,7 @@ void BazaDanych::insert(string bazaDanych, string dane[])
 				sort(tabelaRezerwacji.begin(), tabelaRezerwacji.end(), [](Rezerwacje* a, Rezerwacje* b) {return (a->getRezerwacjaID() < b->getRezerwacjaID()); });
 		}
 	}
+	zapiszDane();
 }
 
 string** BazaDanych::rozszezenieTablicy(string** tab,int wielkoscX, int wielkoscY)

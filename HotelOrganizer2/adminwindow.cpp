@@ -91,6 +91,7 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 	baza = new BazaDanych();
 	iloscDanych = baza->select("klienci", klienci);
 	QMessageBox::information(this, "Info", "kliknąłeś Dodaj");
+
 	// TODO: obsluzyc dodawanie
 
 	// pobranie danych z inputow
@@ -101,6 +102,10 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 	QString clientDays = ui->spinBoxClientDays->text();
 	QString clientRoomNumber = ui->spinBoxClientRoomNumber->text();
 	QString clientPeople = ui->spinBoxClientPeople->text();
+	ui->listWidgetClients->addItem(
+		clientName + " " + clientSurname + " " + clientPesel + " " +
+		clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
+	);
 	idKlienta = szukajDanychWPolu(clientPesel.toStdString(), klienci, iloscDanych, 3);
 	if(idKlienta != -1)
 	{
@@ -108,12 +113,12 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 	}
 	else	//jesli nie ma takiego klienta to go dodaje
 	{
-		klient = new string[5];
+		klient = new string[6];
 		klient[1] = clientName.toStdString();
 		klient[2] = clientSurname.toStdString();
 		klient[3] = clientPesel.toStdString();
-		klient[4] = string("0");		//telefon;
-		klient[5] = string("0");		//email;
+		klient[4] = "ala";		//telefon;
+		klient[5] = "ala";		//email;
 		baza->insert("klienci", klient);
 	}
 	iloscDanych = baza->select("klienci", klienci);
@@ -130,10 +135,10 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 			rezerwacja[4] = clientDays.toStdString();
 			rezerwacja[5] = clientPeople.toStdString();		//tabela rezerwacji mila miec inne pola
 			baza->insert("rezerwacje", rezerwacja);
-			ui->listWidgetClients->addItem(
-				clientName + " " + clientSurname + " " + clientPesel + " " +
-				clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
-			);
+			//ui->listWidgetClients->addItem(
+			//	clientName + " " + clientSurname + " " + clientPesel + " " +
+			//	clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
+			//);
 		}
 		else
 		{
