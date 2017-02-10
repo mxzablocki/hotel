@@ -28,24 +28,24 @@ void RoomWindow::on_pushButtonManageClients_clicked()
 
 void RoomWindow::on_pushButtonRoomAdd_clicked()
 {
-	QMessageBox::information(this, "Info", "klikn¹³eœ Dodaj");
+	QMessageBox::information(this, "Info", "kliknąłeś Dodaj");
 	// TODO: obsluzyc dodawanie
 }
 
 void RoomWindow::on_pushButtonRoomSearch_clicked()
 {
-	QMessageBox::information(this, "Info", "klikn¹³eœ Szukaj");
+	QMessageBox::information(this, "Info", "kliknąłeś Szukaj");
 	// TODO: obsluzyc szukanie
 }
 
 void RoomWindow::on_pushButtonRoomEdit_clicked()
 {
-	QMessageBox::information(this, "Info", "klikn¹³eœ Edytuj");
+	QMessageBox::information(this, "Info", "kliknąłeś Edytuj");
 	// TODO: obsluzyc edycje
 }
 
 void RoomWindow::on_pushButtonRoomDelete_clicked()
 {
-	QMessageBox::information(this, "Info", "klikn¹³eœ Usuñ");
+	QMessageBox::information(this, "Info", "kliknąłeś Usuń");
 	// TODO: obsluzyc usuwanie
 }
