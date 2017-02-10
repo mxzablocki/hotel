@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "roomwindow.h"
-
+#include <string>
 class RoomWindow;
 
 namespace Ui {
@@ -27,8 +27,8 @@ private slots:
 	void on_pushButtonClientDelete_clicked(); // przycisk usuwanie klienta
 
 private:
-	void konwertujStringNaDate(string StrData, struct tm *timeinfo);
-	int szukajDanychWPolu(string dana, string** tabela, int iloscDanych,int nrPola);	//zwraca id z tabeli a przyjmuje tablice z bazy i nr pola z ktorym ma porownywac
+	void konwertujStringNaDate(std::string StrData, struct tm *timeinfo);
+	int szukajDanychWPolu(std::string dana, std::string** tabela, int iloscDanych,int nrPola);	//zwraca id z tabeli a przyjmuje tablice z bazy i nr pola z ktorym ma porownywac
     Ui::AdminWindow *ui;
     RoomWindow *roomWindow; // przechowuje okno zarzadzania pokojami
 };

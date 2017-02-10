@@ -27,37 +27,39 @@ void AdminWindow::on_pushButtonManageRooms_clicked()
 	roomWindow = new RoomWindow();
 	roomWindow->show();
 }
-int AdminWindow::szukajDanychWPolu(string dana, string** tabela, int iloscDanych, int nrPola)
+int AdminWindow::szukajDanychWPolu(std::string dana, std::string** tabela, int iloscDanych, int nrPola)
+{
 	for (int i = 0; i < iloscDanych; i++)
 	{
-		if (klienci[i][nrPola] == dana)
+		if (tabela[i][nrPola] == dana)
 		{
-			return atoi(dana[i][0]);	//jak znajdzie to zwraca id
+			return atoi(tabela[i][0].c_str());	//jak znajdzie to zwraca id
 		}
 	}
 	return -1;
 }
 void AdminWindow::konwertujStringNaDate(string StrData, struct tm *timeinfo)	//format daty yyyy-mm-dd
 {	//nie testowalem tego nie wiem czy dziala
-	time_t rawtime;
-	//struct tm * timeinfo;
-	int year, month, day;
-	year = atoi(StrData.substr(0, 4));//rok
-	month = atoi(StrData.substr(5, 2));//miesiac
-	month = atoi(StrData.substr(8, 2))//miesiac 
-	time(&rawtime);
-	timeinfo = localtime(&rawtime);
-	timeinfo->tm_year = year - 1900;
-	timeinfo->tm_mon = month - 1;
-	timeinfo->tm_mday = day;
-	mktime(timeinfo);
+	//time_t rawtime;
+	////struct tm * timeinfo;
+	//int year, month, day;
+	//year = atoi(StrData.substr(0, 4).c_str());//rok
+	//month = atoi(StrData.substr(5, 2).c_str());//miesiac
+	//month = atoi(StrData.substr(8, 2).c_str());//miesiac 
+	//time(&rawtime);
+	//timeinfo = localtime(&rawtime);
+	//timeinfo->tm_year = year - 1900;
+	//timeinfo->tm_mon = month - 1;
+	//timeinfo->tm_mday = day;
+	//mktime(timeinfo);
 }
 void AdminWindow::on_pushButtonClientAdd_clicked()
 {
 	string **klienci = nullptr;
 	string **pokoje = nullptr;
 	BazaDanych * baza;
-	string* rezerwacja, klient;
+	string* rezerwacja;
+	string* klient;
 	int iloscDanych;
 	int idKlienta = -1;
 	int idPokoju = -1;
@@ -87,8 +89,8 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 		klient[1] = clientName.toStdString();
 		klient[2] = clientSurname.toStdString();
 		klient[3] = clientPesel.toStdString();
-		klient[4] = "0";		//telefon;
-		klient[5] = "0";		//email;
+		klient[4] = string("0");		//telefon;
+		klient[5] = string("0");		//email;
 		baza->insert("klienci", klient);
 	}
 	iloscDanych = baza->select("klienci", klienci);
@@ -133,17 +135,17 @@ void AdminWindow::on_pushButtonClientEdit_clicked()
 	string *rezerwacja;
 	BazaDanych * baza;
 	QMessageBox::information(this, "Info", "kliknąłeś Edytuj");
-	QString *wiersz;
+	QString wiersz;
 	if ((ui->listWidgetClients->currentItem()->text()) != nullptr)	//jesli jest zaznaczone
 	{
 		baza = new BazaDanych();
-		rezerwacja = new sting[6];
+		rezerwacja = new string[6];
 		wiersz = ui->listWidgetClients->currentItem()->text();
 
 		//TODO ustawienie danych do rezerwacji
 
 
-		baza->remove("rezerwacje", rezerwacja[0]);	//usuwa rezerwacje z bazy
+		baza->remove("rezerwacje", atoi(rezerwacja[0].c_str()));	//usuwa rezerwacje z bazy
 		//pobranie danych z pól
 		QString clientName = ui->lineEditClientName->text();
 		QString clientSurname = ui->lineEditClientSurname->text();
