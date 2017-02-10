@@ -119,6 +119,7 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 	{
 		//error nie udalo sie stowrzyc klienta
 	}
+	//zwalnianie pamieci
 }
 
 void AdminWindow::on_pushButtonClientSearch_clicked()
@@ -129,7 +130,32 @@ void AdminWindow::on_pushButtonClientSearch_clicked()
 
 void AdminWindow::on_pushButtonClientEdit_clicked()
 {
+	string *rezerwacja;
+	BazaDanych * baza;
 	QMessageBox::information(this, "Info", "kliknąłeś Edytuj");
+	QString *wiersz;
+	if ((ui->listWidgetClients->currentItem()->text()) != nullptr)	//jesli jest zaznaczone
+	{
+		baza = new BazaDanych();
+		rezerwacja = new sting[6];
+		wiersz = ui->listWidgetClients->currentItem()->text();
+
+		//TODO ustawienie danych do rezerwacji
+
+
+		baza->remove("rezerwacje", rezerwacja[0]);	//usuwa rezerwacje z bazy
+		//pobranie danych z pól
+		QString clientName = ui->lineEditClientName->text();
+		QString clientSurname = ui->lineEditClientSurname->text();
+		QString clientPesel = ui->lineEditClientPesel->text();
+		QString clientDate = ui->dateEditClientDate->text();
+		QString clientDays = ui->spinBoxClientDays->text();
+		QString clientRoomNumber = ui->spinBoxClientRoomNumber->text();
+		QString clientPeople = ui->spinBoxClientPeople->text();
+		
+		//wlasciwie to to samo co jest w dodawaniu
+	}
+
 	// TODO: obsluzyc edycje
 }
 
@@ -137,7 +163,7 @@ void AdminWindow::on_pushButtonClientDelete_clicked()
 {
 	QMessageBox::information(this, "Info", "kliknąłeś Usuń");
 	// TODO: obsluzyc usuwanie
-
+	//wlasciwie to 1 czesc edycji :)
     // usuwanie zaznaczonego elementu
 	delete ui->listWidgetClients->currentItem();
 }
