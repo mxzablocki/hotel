@@ -1,6 +1,7 @@
 #include "adminwindow.h"
 #include "ui_adminwindow.h"
 #include <QMessageBox>
+#include <QString>
 
 AdminWindow::AdminWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -30,6 +31,20 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 {
 	QMessageBox::information(this, "Info", "kliknąłeś Dodaj");
 	// TODO: obsluzyc dodawanie
+
+	// pobranie danych z inputow
+	QString clientName = ui->lineEditClientName->text();
+	QString clientSurname = ui->lineEditClientSurname->text();
+	QString clientPesel = ui->lineEditClientPesel->text();
+	QString clientDate = ui->dateEditClientDate->text();
+	QString clientDays = ui->spinBoxClientDays->text();
+	QString clientRoomNumber = ui->spinBoxClientRoomNumber->text();
+	QString clientPeople = ui->spinBoxClientPeople->text();
+
+	ui->listWidgetClients->addItem(
+		clientName + " " + clientSurname + " " + clientPesel + " " + 
+		clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
+		);
 }
 
 void AdminWindow::on_pushButtonClientSearch_clicked()
