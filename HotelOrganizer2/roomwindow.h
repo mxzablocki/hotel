@@ -19,11 +19,11 @@ public:
     ~RoomWindow();
 
 private slots:
-    void on_pushButtonManageRooms_clicked();
-	void on_pushButtonRoomAdd_clicked();
-	void on_pushButtonRoomSearch_clicked();
-	void on_pushButtonRoomEdit_clicked();
-	void on_pushButtonRoomDelete_clicked();
+    void on_pushButtonManageClients_clicked(); // przycisk zarzadzania klientami
+	void on_pushButtonRoomAdd_clicked();	   // przycisk dodawanie pokoju
+	void on_pushButtonRoomSearch_clicked();	   // przycisk szukanie pokoju
+	void on_pushButtonRoomEdit_clicked();      // przycisk edycja pokoju
+	void on_pushButtonRoomDelete_clicked();    // przycisk usuwanie pokoju
 
 private:
     Ui::RoomWindow *ui;

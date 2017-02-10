@@ -18,7 +18,7 @@ RoomWindow::~RoomWindow()
 	delete adminWindow;
 }
 
-void RoomWindow::on_pushButtonManageRooms_clicked()
+void RoomWindow::on_pushButtonManageClients_clicked()
 {
     // ukrycie aktualnego okna oraz utworzenie nowego okna (zarzadzanie klientami)
     hide();
@@ -28,24 +28,24 @@ void RoomWindow::on_pushButtonManageRooms_clicked()
 
 void RoomWindow::on_pushButtonRoomAdd_clicked()
 {
-	QMessageBox::information(this, "Info", "klikn¹³eœ Dodaj");
+	QMessageBox::information(this, "Info", "kliknÂ¹Â³eÅ“ Dodaj");
 	// TODO: obsluzyc dodawanie
 }
 
 void RoomWindow::on_pushButtonRoomSearch_clicked()
 {
-	QMessageBox::information(this, "Info", "klikn¹³eœ Szukaj");
+	QMessageBox::information(this, "Info", "kliknÂ¹Â³eÅ“ Szukaj");
 	// TODO: obsluzyc szukanie
 }
 
 void RoomWindow::on_pushButtonRoomEdit_clicked()
 {
-	QMessageBox::information(this, "Info", "klikn¹³eœ Edytuj");
+	QMessageBox::information(this, "Info", "kliknÂ¹Â³eÅ“ Edytuj");
 	// TODO: obsluzyc edycje
 }
 
 void RoomWindow::on_pushButtonRoomDelete_clicked()
 {
-	QMessageBox::information(this, "Info", "klikn¹³eœ Usuñ");
+	QMessageBox::information(this, "Info", "kliknÂ¹Â³eÅ“ UsuÃ±");
 	// TODO: obsluzyc usuwanie
 }
