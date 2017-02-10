@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QMessageBox> // wyswietlanie komunikator podczas logownia
+#include <QMessageBox> // wyswietlanie komunikatow podczas logownia
 #include <QPixmap>     // do ikon
 #include <string>
 #include "BazaDanych.h"
@@ -45,7 +45,7 @@ void MainWindow::on_pushButtonLogin_clicked()
     }
     if (poprawneHaslo == true)
     {
-        if (uzytkownicy[nrWiersza][5]=="admin")   //jesli typ zalogowanego uzytkownika to admin
+        if (uzytkownicy[nrWiersza][5]=="admin")   // jesli typ zalogowanego uzytkownika to admin
         {
             QMessageBox::information(this, "Logowanie", "Zostałeś/łaś zalogowany/na jako administrator.");
             // ukrycie aktualnego okna oraz utworzenie nowego okna (zarzadzanie klientami)

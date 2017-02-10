@@ -19,9 +19,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButtonLogin_clicked();
-    void on_actionApplication_triggered();
-    void on_actionAuthors_triggered();
+    void on_pushButtonLogin_clicked();			// przycisk logowania
+    void on_actionApplication_triggered();		// opcja "o aplikacji" z menu informacje
+    void on_actionAuthors_triggered();			// opcja "o autorach" z menu informacje
 
 private:
     Ui::MainWindow *ui;
