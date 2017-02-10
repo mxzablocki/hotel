@@ -44,7 +44,7 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 	ui->listWidgetClients->addItem(
 		clientName + " " + clientSurname + " " + clientPesel + " " + 
 		clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
-		);
+	);
 }
 
 void AdminWindow::on_pushButtonClientSearch_clicked()
@@ -63,4 +63,7 @@ void AdminWindow::on_pushButtonClientDelete_clicked()
 {
 	QMessageBox::information(this, "Info", "kliknąłeś Usuń");
 	// TODO: obsluzyc usuwanie
+
+    // usuwanie zaznaczonego elementu
+	delete ui->listWidgetClients->currentItem();
 }
