@@ -150,7 +150,7 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QPushButton" name="pushButtonManageRooms">
+           <widget class="QPushButton" name="pushButtonManageClients">
             <property name="text">
              <string>Zarządzaj klientami</string>
             </property>
