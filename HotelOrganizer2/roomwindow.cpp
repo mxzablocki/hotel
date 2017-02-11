@@ -21,6 +21,7 @@ RoomWindow::RoomWindow(QWidget *parent) :
 		maxIloscMiejsc = QString::fromStdString(pokoje[i][2]);
 		ui->listWidgetRooms->addItem(IDpokoju + " " + nrPokoju + " " + maxIloscMiejsc);
 	}
+	ui->labelInfoRoomsNumber->setText(QString::number(iloscDanych));
 	delete baza;
 	for (int i = 0; i < iloscDanych; i++)
 	{
@@ -111,6 +112,11 @@ void RoomWindow::on_pushButtonRoomAdd_clicked()
 		IDpokoju = QString::number(idPokoju);
 		ui->listWidgetRooms->addItem(IDpokoju + " " + nrPokoju + " " + maxIloscOsob);
 		baza->zapiszDane();
+		ui->labelInfoRoomsNumber->setText(QString::number(iloscDanych));
+	}
+	else
+	{
+		QMessageBox::information(this, "Info", "Taki pokój już istnieje");
 	}
 	delete baza;
 	for (int i = 0; i < iloscDanych; i++)
@@ -122,8 +128,51 @@ void RoomWindow::on_pushButtonRoomAdd_clicked()
 
 void RoomWindow::on_pushButtonRoomSearch_clicked()
 {
+	BazaDanych *baza;
 	QMessageBox::information(this, "Info", "kliknąłeś Szukaj");
 	// TODO: obsluzyc szukanie
+	QString IDpokoju;
+	QString nrPokoju = ui->spinBoxRoomNumber->text();
+	QString maxIloscOsob = ui->spinBoxRoomPeople->text();
+	string* daneSzukania;
+	string** pokoje;
+	baza = new BazaDanych();
+	int iloscDanych = baza->select("pokoje", pokoje);
+	daneSzukania = new string[3];
+	daneSzukania[1] = nrPokoju.toStdString();
+	daneSzukania[2] = maxIloscOsob.toStdString();
+
+	if (daneSzukania[1] != "")
+	{
+		for (int i = 0; i < iloscDanych; i++)
+		{
+			if (pokoje[i][1] != daneSzukania[1])
+			{
+				pokoje[i][0] = "";	//jesli rozne to zerujemy ID
+			}
+		}
+	}
+	else if (daneSzukania[2] != "")
+	{
+		for (int i = 0; i < iloscDanych; i++)
+		{
+			if (pokoje[i][2] != daneSzukania[2])
+			{
+				pokoje[i][0] = "";	//jesli rozne to zerujemy ID
+			}
+		}
+	}
+	else if ((daneSzukania[1] != "") && (daneSzukania[2] != ""))
+	{
+		for (int i = 0; i < iloscDanych; i++)
+		{
+			if ((pokoje[i][1] != daneSzukania[1]) && (pokoje[i][2] != daneSzukania[2]))
+			{
+				pokoje[i][0] = "";	//jesli rozne to zerujemy ID
+			}
+		}
+	}
+	
 }
 
 void RoomWindow::on_pushButtonRoomEdit_clicked()
@@ -162,6 +211,11 @@ void RoomWindow::on_pushButtonRoomEdit_clicked()
 			IDpokoju = QString::number(idPokoju);
 			ui->listWidgetRooms->addItem(IDpokoju + " " + nrPokoju + " " + maxIloscOsob);
 			baza->zapiszDane();
+
+		}
+		else
+		{
+			QMessageBox::information(this, "Info", "Taki pokój już istnieje");
 		}
 
 	}
@@ -180,13 +234,16 @@ void RoomWindow::on_pushButtonRoomDelete_clicked()
 	{
 		baza = new BazaDanych();
 		pokoj = new string[3];
+		string** pokoje;
+		int iloscDanych;
 		wiersz = ui->listWidgetRooms->currentItem()->text();
 		dane = dzieleniePoSpacji(wiersz, baza);
 		//TODO ustawienie danych do rezerwacji
-
 		baza->remove("pokoje", atoi(dane[0].c_str()));	//usuwa rezerwacje z bazy
 		delete ui->listWidgetRooms->currentItem();
 		baza->zapiszDane();
+		iloscDanych = baza->select("pokoje", pokoje);
+		ui->labelInfoRoomsNumber->setText(QString::number(iloscDanych));
 	}
 	// TODO: obsluzyc usuwanie
 }

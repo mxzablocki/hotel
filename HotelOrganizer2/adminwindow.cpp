@@ -13,7 +13,9 @@ AdminWindow::AdminWindow(QWidget *parent) :
 	BazaDanych * baza;
 	QString clientID, clientName, clientSurname, clientPesel, clientDate, clientDays, clientRoomNumber, clientPeople;
 	string** rezerwacje = nullptr;
+	string** klienci;
 	baza = new BazaDanych();
+	int iloscKlientow;
 	int iloscDanych = baza->select("rezerwacje", rezerwacje);
 	for (int i = 0; i < iloscDanych; i++)
 	{
@@ -30,6 +32,8 @@ AdminWindow::AdminWindow(QWidget *parent) :
 			clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
 		);
 	}
+	iloscKlientow = baza->select("klienci", klienci);
+	ui->labelInfoClientsNumber->setText(QString::number(iloscKlientow));
 	delete baza;
 	for (int i = 0; i < iloscDanych; i++)
 		delete[] rezerwacje[i];
@@ -142,6 +146,8 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 				clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
 			);
 			baza->zapiszDane();
+			iloscDanych = baza->select("klienci", klienci);
+			ui->labelInfoClientsNumber->setText(QString::number(iloscDanych));
 		}
 		else
 		{
@@ -159,6 +165,14 @@ void AdminWindow::on_pushButtonClientSearch_clicked()
 {
 	QMessageBox::information(this, "Info", "kliknąłeś Szukaj");
 	// TODO: obsluzyc szukanie
+	//QString clientID = dane[0].c_str();
+	QString clientName = ui->lineEditClientName->text();
+	QString clientSurname = ui->lineEditClientSurname->text();
+	QString clientPesel = ui->lineEditClientPesel->text();
+	QString clientDate = ui->dateEditClientDate->text();
+	QString clientDays = ui->spinBoxClientDays->text();
+	QString clientRoomNumber = ui->spinBoxClientRoomNumber->text();
+	QString clientPeople = ui->spinBoxClientPeople->text();
 }
 string* AdminWindow::dzieleniePoSpacji(QString dane, BazaDanych *baza)
 {
@@ -283,6 +297,8 @@ void AdminWindow::on_pushButtonClientDelete_clicked()
 {
 	BazaDanych * baza;
 	baza = new BazaDanych();
+	int iloscDanych;
+	string** klienci;
 	string* rezerwacja;
 	string* dane;
 	QMessageBox::information(this, "Info", "kliknąłeś Usuń");
@@ -298,6 +314,8 @@ void AdminWindow::on_pushButtonClientDelete_clicked()
 		baza->remove("rezerwacje", atoi(dane[0].c_str()));	//usuwa rezerwacje z bazy
 		delete ui->listWidgetClients->currentItem();
 		baza->zapiszDane();
+		iloscDanych = baza->select("klienci", klienci);
+		ui->labelInfoClientsNumber->setText(QString::number(iloscDanych));
 	}
 	// TODO: obsluzyc usuwanie
 	//wlasciwie to 1 czesc edycji :)
