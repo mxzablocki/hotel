@@ -142,7 +142,7 @@ void RoomWindow::on_pushButtonRoomSearch_clicked()
 	daneSzukania[1] = nrPokoju.toStdString();
 	daneSzukania[2] = maxIloscOsob.toStdString();
 
-	if (daneSzukania[1] != "")
+	if (daneSzukania[1] != "0")
 	{
 		for (int i = 0; i < iloscDanych; i++)
 		{
@@ -152,7 +152,7 @@ void RoomWindow::on_pushButtonRoomSearch_clicked()
 			}
 		}
 	}
-	else if (daneSzukania[2] != "")
+	else if (daneSzukania[2] != "0")
 	{
 		for (int i = 0; i < iloscDanych; i++)
 		{
@@ -162,7 +162,7 @@ void RoomWindow::on_pushButtonRoomSearch_clicked()
 			}
 		}
 	}
-	else if ((daneSzukania[1] != "") && (daneSzukania[2] != ""))
+	else if ((daneSzukania[1] != "0") && (daneSzukania[2] != "0"))
 	{
 		for (int i = 0; i < iloscDanych; i++)
 		{
@@ -173,6 +173,21 @@ void RoomWindow::on_pushButtonRoomSearch_clicked()
 		}
 	}
 	
+
+	while (ui->listWidgetRooms->count() > 0)
+	{
+		ui->listWidgetRooms->takeItem(0);
+	}
+	for (int i = 0; i < iloscDanych; i++)
+	{
+		if (pokoje[i][0] != "")
+		{
+			IDpokoju = QString::fromStdString(pokoje[i][0]);
+			nrPokoju = QString::fromStdString(pokoje[i][1]);
+			maxIloscOsob = QString::fromStdString(pokoje[i][2]);
+			ui->listWidgetRooms->addItem(IDpokoju + " " + nrPokoju + " " + maxIloscOsob);
+		}
+	}
 }
 
 void RoomWindow::on_pushButtonRoomEdit_clicked()
