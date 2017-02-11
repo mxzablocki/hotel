@@ -4,24 +4,25 @@
 #include <QString>
 #include "BazaDanych.h"
 
-AdminWindow::AdminWindow(QWidget *parent) :ui(new Ui::AdminWindow)
+AdminWindow::AdminWindow(QWidget *parent) :
+	QMainWindow(parent), 
+	ui(new Ui::AdminWindow)
 {
+	ui->setupUi(this);
+	roomWindow = nullptr;
 	BazaDanych * baza;
-	string** rezerwacje;
+	QString clientID, clientName, clientSurname, clientPesel, clientDate, clientDays, clientRoomNumber, clientPeople;
+	string** rezerwacje = nullptr;
 	baza = new BazaDanych();
 	int iloscDanych = baza->select("rezerwacje", rezerwacje);
-	QString clientID, clientName, clientSurname, clientPesel, clientDate, clientDays, clientRoomNumber, clientPeople;
-	QMainWindow(parent),
-		ui->setupUi(this);
-	roomWindow = nullptr;
 	for (int i = 0; i < iloscDanych; i++)
 	{
 		clientID = QString::fromStdString(rezerwacje[i][0]);
 		clientRoomNumber = QString::fromStdString(rezerwacje[i][3]);
 		clientPeople = QString::fromStdString(rezerwacje[i][12]);
-		clientName = QString::fromStdString(rezerwacje[i][5]);
-		clientSurname = QString::fromStdString(rezerwacje[i][6]);
-		clientPesel = QString::fromStdString(rezerwacje[i][7]);
+		clientName = QString::fromStdString(rezerwacje[i][6]);
+		clientSurname = QString::fromStdString(rezerwacje[i][7]);
+		clientPesel = QString::fromStdString(rezerwacje[i][8]);
 		clientDate = QString::fromStdString(rezerwacje[i][10]);
 		clientDays = QString::fromStdString(rezerwacje[i][11]);
 		ui->listWidgetClients->addItem(
@@ -102,10 +103,7 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 	QString clientDays = ui->spinBoxClientDays->text();
 	QString clientRoomNumber = ui->spinBoxClientRoomNumber->text();
 	QString clientPeople = ui->spinBoxClientPeople->text();
-	ui->listWidgetClients->addItem(
-		clientName + " " + clientSurname + " " + clientPesel + " " +
-		clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
-	);
+
 	idKlienta = szukajDanychWPolu(clientPesel.toStdString(), klienci, iloscDanych, 3);
 	if(idKlienta != -1)
 	{
@@ -129,25 +127,25 @@ void AdminWindow::on_pushButtonClientAdd_clicked()
 		idPokoju = szukajDanychWPolu(clientRoomNumber.toStdString(), pokoje, iloscDanych, 2);
 		if(idPokoju != -1)
 		{
-			rezerwacja[1] = idPokoju;
-			rezerwacja[2] = idKlienta;
+			rezerwacja[1] = to_string(idPokoju);
+			rezerwacja[2] = to_string(idKlienta);
 			rezerwacja[3] = clientDate.toStdString();
 			rezerwacja[4] = clientDays.toStdString();
 			rezerwacja[5] = clientPeople.toStdString();		//tabela rezerwacji mila miec inne pola
 			baza->insert("rezerwacje", rezerwacja);
-			//ui->listWidgetClients->addItem(
-			//	clientName + " " + clientSurname + " " + clientPesel + " " +
-			//	clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
-			//);
+			ui->listWidgetClients->addItem(
+				clientName + " " + clientSurname + " " + clientPesel + " " +
+				clientDate + " " + clientDays + " " + clientRoomNumber + " " + clientPeople
+			);
 		}
 		else
 		{
-			//nie ma pokoju
+			QMessageBox::information(this, "Info", "Nie można takiego pokoju");
 		}
 	}
 	else
 	{
-		//error nie udalo sie stowrzyc klienta
+		QMessageBox::information(this, "Info", "nie można stwożyć klienta");
 	}
 	//zwalnianie pamieci
 }

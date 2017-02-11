@@ -10,7 +10,7 @@ Pokoje::Pokoje(std::string* tab)
 {
 	pokojID = atoi(tab[0].c_str());
 	iloscMiejsc = atoi(tab[1].c_str());
-	nrPokoju = tab[2];
+	nrPokoju = atoi(tab[2].c_str());
 }
 
 // Gettery
@@ -24,7 +24,7 @@ int Pokoje::getIloscMiejsc()
 	return iloscMiejsc;
 }
 
-std::string Pokoje::getNrPokoju()
+int Pokoje::getNrPokoju()
 {
 	return nrPokoju;
 }

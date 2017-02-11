@@ -17,8 +17,8 @@ Rezerwacje::Rezerwacje(std::string * tab)
 	pokojID = atoi(tab[1].c_str());
 	KlientID = atoi(tab[2].c_str());
 	terminPoczatkowy = tab[3];
-	terminKoncowy = tab[4];
-	statusRezerwacji = tab[5];
+	terminKoncowy = atoi(tab[4].c_str());
+	statusRezerwacji = atoi(tab[5].c_str());
 }
 
 // Gettery
@@ -42,12 +42,12 @@ std::string Rezerwacje::getTerminPoczatkowy()
 	return terminPoczatkowy;
 }
 
-std::string Rezerwacje::getTerminKoncowy()
+int Rezerwacje::getTerminKoncowy()
 {
 	return terminKoncowy;
 }
 
-std::string Rezerwacje::getStatusRezerwacji()
+int Rezerwacje::getStatusRezerwacji()
 {
 	return statusRezerwacji;
 }

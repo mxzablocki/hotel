@@ -12,13 +12,13 @@ public:
 	~Pokoje();
 	int getPokojID();
 	int getIloscMiejsc();
-	std::string getNrPokoju();
+	int getNrPokoju();
 	bool operator<(Pokoje& l);
 	friend std::ostream& operator <<(std::ostream& stream,Pokoje* baza);
 private:
 	int pokojID;
 	int iloscMiejsc;
-	std::string nrPokoju;
+	int nrPokoju;
 };
 
 #endif // POKOJE_H

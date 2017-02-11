@@ -6,3 +6,8 @@
 6 2 3 4 5 6
 7 jan kowalski stu 123123123 yos@23
 8 asd asd 1231231231 ala ala
+9 john rambo 1230121233 ala ala
+10 asd1 123 12351231232 ala ala
+11 123 123 1235223122 ala ala
+12 asd asd 1231231233 ala ala
+13 asd asd 1231231237 ala ala

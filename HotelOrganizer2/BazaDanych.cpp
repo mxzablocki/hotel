@@ -230,6 +230,26 @@ BazaDanych::BazaDanych()
 BazaDanych::~BazaDanych()
 {
 	//zwolnienie pamieci z wektorow i zamkniecie plikow
+	for (int i = 0; i < tabelaKlientow.size(); i++)
+	{
+		delete tabelaKlientow[i];
+	}
+	for (int i = 0; i < tabelaLogow.size(); i++)
+	{
+		delete tabelaLogow[i];
+	}
+	for (int i = 0; i < tabelaPokojow.size(); i++)
+	{
+		delete tabelaPokojow[i];
+	}
+	for (int i = 0; i < tabelaRezerwacji.size(); i++)
+	{
+		delete tabelaRezerwacji[i];
+	}
+	for (int i = 0; i < tabelaUzytkownikow.size(); i++)
+	{
+		delete tabelaUzytkownikow[i];
+	}
 }
 
 int BazaDanych::szukajID(string bazaDanych)
@@ -545,8 +565,8 @@ int BazaDanych::select(string bazaDanych, string** &dane)
 		for (int i = 0; i < iloscDanych; i++)
 		{
 			wynik[i][0] = to_string(tabelaPokojow[i]->getPokojID());
-			wynik[i][1] = tabelaPokojow[i]->getIloscMiejsc();
-			wynik[i][2] = tabelaPokojow[i]->getIloscMiejsc();
+			wynik[i][1] = to_string(tabelaPokojow[i]->getIloscMiejsc());
+			wynik[i][2] = to_string(tabelaPokojow[i]->getNrPokoju());
 		}
 	}
 	else if (bazaDanych == "rezerwacje")
@@ -564,9 +584,9 @@ int BazaDanych::select(string bazaDanych, string** &dane)
 			for (int j = 0; j < 3; j++) { wynik[i][j + 1] = kluczObcy[j]; }
 			kluczObcy = select("klienci", tabelaRezerwacji[i]->getKlientID());
 			for (int j = 0; j < 6; j++) { wynik[i][j + 5] = kluczObcy[j]; }
-			wynik[i][11] = tabelaRezerwacji[i]->getTerminPoczatkowy();
-			wynik[i][12] = tabelaRezerwacji[i]->getTerminKoncowy();
-			wynik[i][13] = tabelaRezerwacji[i]->getStatusRezerwacji();
+			wynik[i][10] = tabelaRezerwacji[i]->getTerminPoczatkowy();
+			wynik[i][11] = to_string(tabelaRezerwacji[i]->getTerminKoncowy());
+			wynik[i][12] = to_string(tabelaRezerwacji[i]->getStatusRezerwacji());
 		}
 	}
 	dane = wynik;
@@ -639,8 +659,8 @@ string* BazaDanych::select(string bazaDanych, int id)
 			if (id == tabelaPokojow[i]->getPokojID())
 			{
 				wynik[0] = to_string(tabelaPokojow[i]->getPokojID());
-				wynik[1] = tabelaPokojow[i]->getIloscMiejsc();
-				wynik[2] = tabelaPokojow[i]->getIloscMiejsc();
+				wynik[1] =to_string(tabelaPokojow[i]->getIloscMiejsc());
+				wynik[2] = to_string(tabelaPokojow[i]->getIloscMiejsc());
 				return wynik;
 			}
 		}
@@ -660,8 +680,8 @@ string* BazaDanych::select(string bazaDanych, int id)
 				//wynik[1] = to_string(tabelaRezerwacji[i]->getPokojID());
 				//wynik[2] = to_string(tabelaRezerwacji[i]->getKlientID());
 				wynik[11] = tabelaRezerwacji[i]->getTerminPoczatkowy();
-				wynik[12] = tabelaRezerwacji[i]->getTerminKoncowy();
-				wynik[13] = tabelaRezerwacji[i]->getStatusRezerwacji();
+				wynik[12] = to_string(tabelaRezerwacji[i]->getTerminKoncowy());
+				wynik[13] = to_string(tabelaRezerwacji[i]->getStatusRezerwacji());
 				return wynik;
 			}
 		}

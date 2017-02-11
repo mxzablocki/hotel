@@ -14,8 +14,8 @@ public:
 	int getPokojID();
 	int getKlientID();
 	std::string getTerminPoczatkowy();
-	std::string getTerminKoncowy();
-	std::string getStatusRezerwacji();
+	int getTerminKoncowy();
+	int getStatusRezerwacji();
 	bool operator<(Rezerwacje& l);
 	friend std::ostream& operator <<(std::ostream& stream, Rezerwacje* baza);
 private:
@@ -23,8 +23,8 @@ private:
 	int pokojID;
 	int KlientID;
 	std::string terminPoczatkowy;
-	std::string terminKoncowy;
-	std::string statusRezerwacji;
+	int terminKoncowy;
+	int statusRezerwacji;
 };
 
 #endif // REZERWACJE_H
