@@ -23,7 +23,6 @@ private slots:
 	
     void on_pushButtonManageRooms_clicked();  // przycisk zarzadzania pokojami
 	void on_pushButtonClientAdd_clicked();    // przycisk dodawanie klienta
-	void on_pushButtonClientSearch_clicked(); // przycisk szukanie klienta
 	void on_pushButtonClientEdit_clicked();   // przycisk edycja klienta
 	void on_pushButtonClientDelete_clicked(); // przycisk usuwanie klienta
 

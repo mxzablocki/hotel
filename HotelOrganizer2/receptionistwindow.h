@@ -20,12 +20,10 @@ public:
 
 private slots:
 	void on_pushButtonClientAdd_clicked();    // przycisk dodawanie klienta
-	void on_pushButtonClientSearch_clicked(); // przycisk szukanie klienta
 	void on_pushButtonClientEdit_clicked();   // przycisk edycja klienta
 	void on_pushButtonClientDelete_clicked(); // przycisk usuwanie klienta
 
 private:
-	
 	void konwertujStringNaDate(std::string StrData, struct tm *timeinfo);
 	int szukajDanychWPolu(std::string dana, std::string** tabela, int iloscDanych,int nrPola);	//zwraca id z tabeli a przyjmuje tablice z bazy i nr pola z ktorym ma porownywac
     Ui::ReceptionistWindow *ui;

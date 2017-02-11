@@ -150,19 +150,6 @@ void ReceptionistWindow::on_pushButtonClientAdd_clicked()
 	//zwalnianie pamieci
 }
 
-void ReceptionistWindow::on_pushButtonClientSearch_clicked()
-{
-	QMessageBox::information(this, "Info", "kliknąłeś Szukaj");
-	// TODO: obsluzyc szukanie
-	//QString clientID = dane[0].c_str();
-	QString clientName = ui->lineEditClientName->text();
-	QString clientSurname = ui->lineEditClientSurname->text();
-	QString clientPesel = ui->lineEditClientPesel->text();
-	QString clientDate = ui->dateEditClientDate->text();
-	QString clientDays = ui->spinBoxClientDays->text();
-	QString clientRoomNumber = ui->spinBoxClientRoomNumber->text();
-	QString clientPeople = ui->spinBoxClientPeople->text();
-}
 string* ReceptionistWindow::dzieleniePoSpacji(QString dane, BazaDanych *baza)
 {
 	string *dana;

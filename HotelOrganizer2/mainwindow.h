@@ -28,8 +28,6 @@ private:
     Ui::MainWindow *ui;
     AdminWindow *adminWindow;                   // okno zarzadzania klientami
     ReceptionistWindow *receptionistWindow;     // okno zarzadzania klientami (recepcjonista)
-    InfoApplication *infoApplicationWindow;     // okno informacje o aplikacji
-    InfoAuthors *infoAuthorsWindow;             // okno informacje o autorach
 };
 
 #endif // MAINWINDOW_H

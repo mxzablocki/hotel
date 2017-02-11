@@ -202,13 +202,6 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButtonClientSearch">
-            <property name="text">
-             <string>Szukaj</string>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QPushButton" name="pushButtonClientEdit">
             <property name="text">
              <string>Edytuj</string>
