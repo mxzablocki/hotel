@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "roomwindow.h"
 #include <string>
+#include "BazaDanych.h"
 class RoomWindow;
 
 namespace Ui {
@@ -17,7 +18,7 @@ class AdminWindow : public QMainWindow
 public:
     explicit AdminWindow(QWidget *parent = 0);
     ~AdminWindow();
-
+	std::string* dzieleniePoSpacji(QString dane, BazaDanych *baza);
 private slots:
 	
     void on_pushButtonManageRooms_clicked();  // przycisk zarzadzania pokojami
@@ -27,6 +28,7 @@ private slots:
 	void on_pushButtonClientDelete_clicked(); // przycisk usuwanie klienta
 
 private:
+	
 	void konwertujStringNaDate(std::string StrData, struct tm *timeinfo);
 	int szukajDanychWPolu(std::string dana, std::string** tabela, int iloscDanych,int nrPola);	//zwraca id z tabeli a przyjmuje tablice z bazy i nr pola z ktorym ma porownywac
     Ui::AdminWindow *ui;

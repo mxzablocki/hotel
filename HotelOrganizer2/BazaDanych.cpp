@@ -348,7 +348,7 @@ int BazaDanych::szukajID(string bazaDanych)
 	}
 }
 
-void BazaDanych::insert(string bazaDanych, string* dane)
+int BazaDanych::insert(string bazaDanych, string* dane)
 {
 	Klienci *tmpKlienci;
 	Pokoje *tmpPokoje;
@@ -358,10 +358,12 @@ void BazaDanych::insert(string bazaDanych, string* dane)
 	if (bazaDanych == "klienci")
 	{
 		dane[0] = to_string(szukajID("klienci"));
+		
 		tmpKlienci = new Klienci(dane);
 		tabelaKlientow.push_back(tmpKlienci);
 		if(tabelaKlientow.size() != 1)
 			sort(tabelaKlientow.begin(), tabelaKlientow.end(), [](Klienci* a, Klienci* b) {return (a->getKlientID() < b->getKlientID()); });
+		return atoi(dane[0].c_str());
 	}
 	else if (bazaDanych == "uzytkownicy")
 	{
@@ -370,6 +372,7 @@ void BazaDanych::insert(string bazaDanych, string* dane)
 		tabelaUzytkownikow.push_back(tmpUzytkownicy);
 		if(tabelaUzytkownikow.size() != 1)
 			sort(tabelaUzytkownikow.begin(), tabelaUzytkownikow.end(), [](Uzytkownicy* a, Uzytkownicy* b) {return (a->getUzytkownikID() < b->getUzytkownikID()); });
+		return atoi(dane[0].c_str());
 	}
 	else if (bazaDanych == "logi")
 	{
@@ -380,6 +383,7 @@ void BazaDanych::insert(string bazaDanych, string* dane)
 			tabelaLogow.push_back(tmpLogi);
 			if(tabelaLogow.size() != 1)
 				sort(tabelaLogow.begin(), tabelaLogow.end(), [](BazaLogow* a, BazaLogow* b) {return (a->getLogID() < b->getLogID()); });
+			return atoi(dane[0].c_str());
 		}
 	}
 	else if (bazaDanych == "pokoje")
@@ -389,6 +393,7 @@ void BazaDanych::insert(string bazaDanych, string* dane)
 		tabelaPokojow.push_back(tmpPokoje);
 		if(tabelaPokojow.size() != 1)
 			sort(tabelaPokojow.begin(), tabelaPokojow.end(), [](Pokoje* a, Pokoje* b) {return (a->getPokojID() < b->getPokojID()); });
+		return atoi(dane[0].c_str());
 	}
 	else if (bazaDanych == "rezerwacje")
 	{
@@ -400,6 +405,7 @@ void BazaDanych::insert(string bazaDanych, string* dane)
 			tabelaRezerwacji.push_back(tmpRezerwacje);
 			if(tabelaRezerwacji.size() != 1)
 				sort(tabelaRezerwacji.begin(), tabelaRezerwacji.end(), [](Rezerwacje* a, Rezerwacje* b) {return (a->getRezerwacjaID() < b->getRezerwacjaID()); });
+			return atoi(dane[0].c_str());
 		}
 	}
 	zapiszDane();

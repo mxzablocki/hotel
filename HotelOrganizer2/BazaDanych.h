@@ -29,8 +29,8 @@ public:
 	int szukajID(std::string bazaDanych);
 	void modyfy(std::string bazaDanych, int ID, std::string dane[]);
 	int remove(std::string bazaDanych, int ID);
-	//przyjmuje tablice danych o rozmiaze wyszyskich pol tablicy(lacznie z id) ID nie musi byc podawane
-	void insert(std::string bazaDanych, std::string* dane);
+	//przyjmuje tablice danych o rozmiaze wyszyskich pol tablicy(lacznie z id) ID nie musi byc podawane zwraca ID
+	int insert(std::string bazaDanych, std::string* dane);
 	//void sortTable(std::string bazaDanych);
 private:
 	//sciezki do polaczenia z plikami
