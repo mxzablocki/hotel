@@ -56,6 +56,9 @@ void MainWindow::on_pushButtonLogin_clicked()
         else if (uzytkownicy[nrWiersza][5]=="recepcjonista")
         {
             QMessageBox::information(this, "Logowanie", "Zostałeś/łaś zalogowany/na jako recepcjonista.");
+            hide();
+            receptionistWindow = new ReceptionistWindow();
+            receptionistWindow->show();
         }
     }
     else

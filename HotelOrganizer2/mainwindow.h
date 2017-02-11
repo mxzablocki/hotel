@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "adminwindow.h"
+#include "receptionistwindow.h"
 #include "infoapplication.h"
 #include "infoauthors.h"
 
@@ -26,6 +27,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     AdminWindow *adminWindow;                   // okno zarzadzania klientami
+    ReceptionistWindow *receptionistWindow;     // okno zarzadzania klientami (recepcjonista)
     InfoApplication *infoApplicationWindow;     // okno informacje o aplikacji
     InfoAuthors *infoAuthorsWindow;             // okno informacje o autorach
 };
